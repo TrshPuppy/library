@@ -7,6 +7,10 @@ body
 /*~~~~~~~~~~~~~~~ MAIN~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .main
 {
+    display:flex;
+    flex-flow:column nowrap;
+    align-items: stretch;
+    justify-content: center;
     width:clamp(43ch, 80%, 1500px);
     margin: 0 auto;
     background-color: white;
@@ -14,17 +18,24 @@ body
 /*~~~~~~~~~~~~~~~~~~HEADER~~~~~~~~~~~~~~~~~~~~~*/
 .header
 {
-
+    width:100%;
+    height:15vh;
+    background-color: red;
 }
 /*~~~~~~~~~~~~~~~~~LIBRARY~~~~~~~~~~~~~~~~~~~~~*/
 .library
 {
-
+    display:flex;
+    flex-flow: row nowrap;
+   /* align-items: stretch; */
+    justify-content: center;
+    height:85vh;
+    background-color: bisque;
 }
 /*~~~~~~~~~~~~~~~~~~LEFT-PANEL~~~~~~~~~~~~~~~~~~*/
 .left-panel
 {
-
+    height:100%;
 }
 /*~~~~~~~~~~~~~~~~~~DESK~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .desk
