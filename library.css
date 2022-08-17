@@ -66,7 +66,7 @@ body
     height:100%;
     width: clamp(45px, 33%,200px);
     background-color: blueviolet;
-    font-size: clamp(.8rem, 2vw, 1rem);
+    font-size: clamp(.8rem, 1vw, 1rem);
 }
 
 .log
@@ -75,14 +75,44 @@ body
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    margin:15px;
+    margin:15px 0;
     background-color: white;
+    width:80%;
 }
 .log-box
 {
     display:flex;
-    align-items: center;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
     padding:10px;
+    width:100%;
+    box-sizing: border-box;
+}
+.shelves
+{
+    display:flex;
+    flex-flow:column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: antiquewhite;
+    width: 80%;
+    margin: 15px 0;
+    text-align: left;
+}
+.shelf-box
+{
+    
+}
+.shelf-box-title
+{
+
+    text-align: center;
+}
+.shelf-box-book
+{
+    text-align:left;
+    padding: 10px 0;
 }
 /*~~~~~~~~~~~~~~~~~~DESK~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .desk
