@@ -106,7 +106,6 @@ body
 }
 .shelf-box-title
 {
-
     text-align: center;
 }
 .shelf-box-book
@@ -121,13 +120,20 @@ body
     display: flex;
     flex-flow: row wrap;
     align-items: flex-start;
-   justify-content: space-evenly;
+   justify-content: center;
     text-align: center;
     width:70%;
-   
 }
 .book-card
 {
+    display:flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 15vh;
     width:clamp(25ch, 30%, 45ch);
     background-color: white;
+    padding:20px;
+    margin: 10px;
+    box-sizing: border-box;
 }
