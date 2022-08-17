@@ -11,7 +11,7 @@ body
     flex-flow:column nowrap;
     align-items: stretch;
     justify-content: center;
-    width:clamp(43ch, 80%, 1500px);
+    width:clamp(43ch, 100%, 1500px);
     margin: 0 auto;
     background-color: white;
 }
@@ -28,7 +28,7 @@ body
     display:flex;
     flex-flow: row nowrap;
    /* align-items: stretch; */
-    justify-content: center;
+    justify-content: flex-start;
     height:85vh;
     background-color: bisque;
 }
@@ -36,6 +36,8 @@ body
 .left-panel
 {
     height:100%;
+    width: clamp(45px, 33%,200px);
+    background-color: blueviolet;
 }
 /*~~~~~~~~~~~~~~~~~~DESK~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .desk
