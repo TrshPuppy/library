@@ -7,7 +7,7 @@ body
 /*~~~~~~~~~~~~~~~ MAIN~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .main
 {
-    width:70vw;
+    width:clamp(43ch, 80%, 1500px);
     margin: 0 auto;
     background-color: white;
 }
@@ -29,5 +29,5 @@ body
 /*~~~~~~~~~~~~~~~~~~DESK~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .desk
 {
-    
+
 }
