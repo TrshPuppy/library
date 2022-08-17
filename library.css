@@ -18,9 +18,28 @@ body
 /*~~~~~~~~~~~~~~~~~~HEADER~~~~~~~~~~~~~~~~~~~~~*/
 .header
 {
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     width:100%;
     height:15vh;
     background-color: red;
+    grid-template-areas: 
+       "logo logo src src src src"
+        "btn btn btn btn btn btn";
+}
+
+.header-logo
+{
+    grid-area: logo;
+}
+.searchbar
+{
+    grid-area: src;
+}
+.header-buttons
+{
+    grid-area: btn;
 }
 /*~~~~~~~~~~~~~~~~~LIBRARY~~~~~~~~~~~~~~~~~~~~~*/
 .library
