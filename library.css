@@ -59,9 +59,30 @@ body
 /*~~~~~~~~~~~~~~~~~~LEFT-PANEL~~~~~~~~~~~~~~~~~~*/
 .left-panel
 {
+    display:flex;
+    flex-flow:column nowrap;
+    align-items: center;
+    justify-content: flex-start;
     height:100%;
     width: clamp(45px, 33%,200px);
     background-color: blueviolet;
+    font-size: clamp(.8rem, 2vw, 1rem);
+}
+
+.log
+{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    margin:15px;
+    background-color: white;
+}
+.log-box
+{
+    display:flex;
+    align-items: center;
+    padding:10px;
 }
 /*~~~~~~~~~~~~~~~~~~DESK~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .desk
