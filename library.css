@@ -1,0 +1,33 @@
+body
+{
+    margin:0;
+    padding:0;
+    background-color: aquamarine;
+}
+/*~~~~~~~~~~~~~~~ MAIN~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.main
+{
+    width:70vw;
+    margin: 0 auto;
+    background-color: white;
+}
+/*~~~~~~~~~~~~~~~~~~HEADER~~~~~~~~~~~~~~~~~~~~~*/
+.header
+{
+
+}
+/*~~~~~~~~~~~~~~~~~LIBRARY~~~~~~~~~~~~~~~~~~~~~*/
+.library
+{
+
+}
+/*~~~~~~~~~~~~~~~~~~LEFT-PANEL~~~~~~~~~~~~~~~~~~*/
+.left-panel
+{
+
+}
+/*~~~~~~~~~~~~~~~~~~DESK~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.desk
+{
+    
+}
