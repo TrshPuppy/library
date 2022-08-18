@@ -50,6 +50,12 @@ body.dark
 {
     display:none;
 }
+.modal-close
+{
+    float: right;
+    padding:10px;
+    cursor: pointer;
+}
 /*~~~~~~~~~~~~~~~~~~HEADER~~~~~~~~~~~~~~~~~~~~~*/
 .header
 {
@@ -124,7 +130,8 @@ button
 {
     padding:5px;
     margin:5px;
-    box-shadow: 
+    box-shadow: var(--btn-box-shadow);
+    cursor:pointer;
 }
 button:hover
 {
