@@ -56,6 +56,12 @@ body.dark
     padding:10px;
     cursor: pointer;
 }
+.modal-content
+{
+    display:flex;
+    flex-flow:column nowrap;
+    align-items: center;
+}
 /*~~~~~~~~~~~~~~~~~~HEADER~~~~~~~~~~~~~~~~~~~~~*/
 .header
 {
