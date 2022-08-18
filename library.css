@@ -234,12 +234,17 @@ button:active
     background-color: var(--off-white);
     box-shadow: var(--box-shadow);
     box-sizing: border-box;
-    padding:0px 0px 0 30px;
-    margin: 20px;
+
+    margin: 20px 0;
+}
+.shelf-box ul
+{
+    padding-left:20px;
 }
 .shelf-box-title
 {
     display: flex;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
     border-bottom: 3px solid var(--main-color);
