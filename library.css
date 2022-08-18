@@ -45,6 +45,11 @@ body.dark
     margin: 0 auto;
     background-color: white;
 }
+/*~~~~~~~~~~~~~~~~~~ MODAL ~~~~~~~~~~~~~~~~~~~~*/
+.modal
+{
+    display:none;
+}
 /*~~~~~~~~~~~~~~~~~~HEADER~~~~~~~~~~~~~~~~~~~~~*/
 .header
 {
