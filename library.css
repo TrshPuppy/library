@@ -22,6 +22,7 @@ body
     --main-font-color: black;
     --off-white:bisque;
     --box-shadow: 5px 5px 10px #a7adb3;
+    --btn-box-shadow: 3px 3px 3px #a7adb3;
 
 }
 
@@ -34,6 +35,7 @@ body.dark
     --main-font-color: white;
     --off-white:#C69D4B;
     --box-shadow:5px 5px 10px #070707;
+    --btn-box-shadow: 3px 3px 3px #070707;
 }
 /*~~~~~~~~~~~~~~~ MAIN~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .main
@@ -114,6 +116,16 @@ button
 {
     padding:5px;
     margin:5px;
+    box-shadow: 
+}
+button:hover
+{
+    transform: translateY(-5px);
+}
+button:active
+{
+    background-color:var(--off-white);
+    transform: translateY(0);
 }
 /*~~~~~~~~~~~~~~~~~LIBRARY~~~~~~~~~~~~~~~~~~~~~*/
 .library
@@ -149,6 +161,7 @@ button
     margin:15px 0;
     background-color: var(--main-color);
     width:80%;
+    box-shadow: var(--box-shadow);
 }
 .log-box
 {
@@ -171,6 +184,7 @@ button
     margin: 15px 0;
     text-align: left;
     font-size: clamp(.7rem, 1vw, 1rem);
+    box-shadow: var(--box-shadow);
 }
 .shelf-box
 {
@@ -208,4 +222,5 @@ button
     padding:20px;
     margin: 10px;
     box-sizing: border-box;
+    box-shadow: var(--box-shadow);
 }
