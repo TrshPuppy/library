@@ -216,29 +216,9 @@ button:active
 {
     font-style: italic;
     color:var(--secondary-font-color);
+    padding-top: 10px;
 }
 
-.log
-{
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    margin:20px 0;
-    background-color:var(--off-white);
-    width:80%;
-    box-shadow: var(--box-shadow);
-}
-.log-box
-{
-    display:flex;
-    flex-flow: row nowrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding:10px;
-    width:100%;
-    box-sizing: border-box;
-}
 .shelves
 {
     display:flex;
@@ -259,11 +239,17 @@ button:active
 }
 .shelf-box-title
 {
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border-bottom: 3px solid var(--main-color);
     border-radius: 0;
     color:var(--secondary-font-color);
     padding:3px;
+}
+.tally
+{
+    padding:0 10px;
 }
 .shelf-box-book
 {
@@ -276,7 +262,7 @@ button:active
 }
 .shelf-box-book-author
 {
-    font-size: clamp(.8rem, 1vw, .9rem);
+    font-size: clamp(.7rem, 1vw, .8rem);
 }
 /*~~~~~~~~~~~~~~~~~~DESK~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .desk
