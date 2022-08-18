@@ -8,6 +8,7 @@
 body
 {
     color: var(--main-font-color);
+    background-color:var(--off-white);
     
     /* Globals: */
   
@@ -20,19 +21,22 @@ body
     --off-white:bisque;
     --box-shadow: 5px 5px 10px #a7adb3;
     --btn-box-shadow: 3px 3px 3px #a7adb3;
+    --header-box-shadow: 0px 3px 3px #a7adb3;
+    
 
 }
 
 body.dark
 {
     /*Dark mode */
-    --main-color: rgb(41, 39, 39);
-    --navbar: rgb(71, 70, 70);
-    --desk-color: #181858;
+    --main-color: #0c1c70;
+    --navbar:#465395;
+    --desk-color:#2b1b5c;
     --main-font-color: white;
-    --off-white:#C69D4B;
+    --off-white:#4c3883;
     --box-shadow:5px 5px 10px #070707;
     --btn-box-shadow: 3px 3px 3px #070707;
+    --header-box-shadow: 0px 3px 3px #070707;
 }
 /*~~~~~~~~~~~~~~~ MAIN~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .main
@@ -43,7 +47,7 @@ body.dark
     justify-content: center;
     width:clamp(43ch, 100%, 1500px);
     margin: 0 auto;
-    background-color: white;
+
 }
 /*~~~~~~~~~~~~~~~~~~ MODAL ~~~~~~~~~~~~~~~~~~~~*/
 .modal
@@ -99,7 +103,7 @@ body.dark
     width:100%;
     height:15vh;
     background-color:var(--main-color);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--header-box-shadow);
     z-index: 1;
     
     /* align-content: space-around; */
@@ -164,6 +168,8 @@ button
 {
     padding:5px;
     margin:5px;
+    background-color: var(--off-white);
+    color: var(--main-font-color);
     box-shadow: var(--btn-box-shadow);
     cursor:pointer;
 }
@@ -173,7 +179,7 @@ button:hover
 }
 button:active
 {
-    background-color:var(--off-white);
+    background-color:var(--desk-color);
     transform: translateY(0);
 }
 /*~~~~~~~~~~~~~~~~~LIBRARY~~~~~~~~~~~~~~~~~~~~~*/
@@ -208,7 +214,7 @@ button:active
     align-items: center;
     justify-content: center;
     margin:15px 0;
-    background-color: var(--main-color);
+    background-color:var(--off-white);
     width:80%;
     box-shadow: var(--box-shadow);
 }
@@ -267,7 +273,7 @@ button:active
     justify-content: space-between;
     height: 15vh;
     width:clamp(25ch, 30%, 45ch);
-    background-color: var(--main-color);
+    background-color: var(--navbar);
     padding:20px;
     margin: 10px;
     box-sizing: border-box;
