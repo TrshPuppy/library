@@ -245,23 +245,22 @@ button:active
     flex-flow:column nowrap;
     align-items: center;
     justify-content: center;
-    background-color: var(--off-white);
     width: 80%;
-    margin: 20px 0;
-
     font-size: clamp(.7rem, 2vw, 1rem);
-    box-shadow: var(--box-shadow);
 }
 .shelf-box 
 {
     width:100%;
+    background-color: var(--off-white);
+    box-shadow: var(--box-shadow);
     box-sizing: border-box;
     padding:0px 0px 0 30px;
+    margin: 20px;
 }
 .shelf-box-title
 {
 
-    border-bottom: 3px solid var(--main-font-color);
+    border-bottom: 3px solid var(--main-color);
     border-radius: 0;
     color:var(--secondary-font-color);
     padding:3px;
@@ -270,6 +269,14 @@ button:active
 {
     text-align:left;
     padding: 10px 0;
+}
+.shelf-box-book-title
+{
+    font-style: italic;
+}
+.shelf-box-book-author
+{
+    font-size: clamp(.8rem, 1vw, .9rem);
 }
 /*~~~~~~~~~~~~~~~~~~DESK~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .desk
