@@ -49,10 +49,17 @@ body.dark
 .modal
 {
     display:none;
+    z-index: 2;
+    position:fixed;
+    top: 25vh;
+    left:calc(50vw - 125px);
+    width:300px;
+    border: 2px solid black;
+    background-color: var(--navbar);
 }
 .modal-close
 {
-    float: right;
+    align-self: flex-end;
     padding:10px;
     cursor: pointer;
 }
@@ -61,6 +68,19 @@ body.dark
     display:flex;
     flex-flow:column nowrap;
     align-items: center;
+    justify-content: center;
+}
+.modal-content form
+{
+    display:flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    padding:20px;
+}
+.modal-content input
+{
+    margin:5px;
 }
 /*~~~~~~~~~~~~~~~~~~HEADER~~~~~~~~~~~~~~~~~~~~~*/
 .header
