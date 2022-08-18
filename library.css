@@ -2,7 +2,7 @@
 {
     margin: 0;
     padding: 0;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 body
@@ -53,8 +53,8 @@ body.dark
     width:100%;
     height:15vh;
     background-color:var(--main-color);
-    align-content: space-around;
-    justify-items: flex-start;
+    /* align-content: space-around; */
+    /* justify-items: flex-start; */
 
     /* grid-template-areas: 
        "logo logo src src src src"
@@ -65,7 +65,7 @@ body.dark
 {
     grid-area: 1/1/3/2;
     padding:10px;
-    
+
 }
 .searchbar
 {
@@ -74,7 +74,7 @@ body.dark
     flex-flow: row nowrap;
     align-items: center;
     justify-content:flex-end;
-    padding: 10px;
+
     width:100%;
     
 }
@@ -99,8 +99,16 @@ body.dark
 .header-buttons
 {
     grid-area: 2/4/3/9;
-    align-items: end;
-    align-content:flex-end;
+    display:flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+button
+{
+    padding:5px;
+    margin:5px;
 }
 /*~~~~~~~~~~~~~~~~~LIBRARY~~~~~~~~~~~~~~~~~~~~~*/
 .library
@@ -155,6 +163,7 @@ body.dark
     width: 80%;
     margin: 15px 0;
     text-align: left;
+    font-size: clamp(.7rem, 1vw, 1rem);
 }
 .shelf-box
 {
