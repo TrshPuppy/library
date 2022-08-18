@@ -212,6 +212,11 @@ button:active
     box-shadow: var(--box-shadow);
     z-index: 1;
 }
+.left-panel p
+{
+    font-style: italic;
+    color:var(--secondary-font-color);
+}
 
 .log
 {
@@ -239,17 +244,27 @@ button:active
     display:flex;
     flex-flow:column nowrap;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     background-color: var(--off-white);
     width: 80%;
     margin: 20px 0;
-    text-align: left;
+
     font-size: clamp(.7rem, 2vw, 1rem);
     box-shadow: var(--box-shadow);
 }
+.shelf-box 
+{
+    width:100%;
+    box-sizing: border-box;
+    padding:0px 0px 0 30px;
+}
 .shelf-box-title
 {
-    text-align: center;
+
+    border-bottom: 3px solid var(--main-font-color);
+    border-radius: 0;
+    color:var(--secondary-font-color);
+    padding:3px;
 }
 .shelf-box-book
 {
