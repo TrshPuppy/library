@@ -20,7 +20,7 @@ body
     --navbar: rgb(207, 204, 204);
     --desk-color: #E4E4F9;
     --main-font-color: black;
-
+    --secondary-font-color:#4c3883;
     --off-white:bisque;
     --box-shadow: 5px 5px 10px #a7adb3;
     --btn-box-shadow: 3px 3px 3px #a7adb3;
@@ -36,6 +36,7 @@ body.dark
     --navbar:#465395;
     --desk-color:#2b1b5c;
     --main-font-color: white;
+    --secondary-font-color:bisque;
     --off-white:#4c3883;
     --box-shadow:5px 5px 10px #070707;
     --btn-box-shadow: 3px 3px 3px #070707;
@@ -176,6 +177,7 @@ button
     color: var(--main-font-color);
     box-shadow: var(--btn-box-shadow);
     cursor:pointer;
+    border:none;
 }
 button:hover
 {
@@ -245,10 +247,6 @@ button:active
     font-size: clamp(.7rem, 2vw, 1rem);
     box-shadow: var(--box-shadow);
 }
-.shelf-box
-{
-    
-}
 .shelf-box-title
 {
     text-align: center;
@@ -276,7 +274,7 @@ button:active
     flex-flow: column nowrap;
     align-items: center;
     justify-content: space-between;
-    height: 15vh;
+    height: 20vh;
     width:clamp(25ch, 40%, 75ch);
     background-color: var(--navbar);
     padding:20px;
@@ -284,4 +282,12 @@ button:active
     border-left: 10px solid var(--main-color);
     box-sizing: border-box;
     box-shadow: var(--box-shadow);
+}
+.book-card-title
+{
+    font-style: italic;
+    font-size: 1.2rem;
+    color:var(--secondary-font-color);
+    border-bottom: 2px solid black;
+    border-radius: 0;
 }
