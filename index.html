@@ -16,14 +16,17 @@
                 <input type="text"
                     id="title"
                     placeholder="Title"
-                    >
+                    required 
+                    maxlength="50">
                     <input type="text"
                     id="author"
                     placeholder="Author"
-                    >
-                    <label for="read">Mark as read:</label>
-                   <input type="checkbox" id="read"class="read">
-                   
+                    maxlength="50">
+                    <div class="is-read">
+                        <label for="read">Mark as read:</label>
+                        <input type="checkbox" id="read"class="read">
+                    </div>
+                   <button type="submit" class="submit-book-button">Add Book</button>
             </form>
           </div>
         </div>
