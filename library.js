@@ -48,6 +48,9 @@ modalActuals.forEach(modalActual =>
 // Fetch add book form input:
 let library = [];
 let submitBookTitle;
+let submitBookAuthor;
+let isReadCheckbox;
+let book;
 class Book 
 {
     constructor(title, author, isRead)
@@ -62,8 +65,13 @@ const submitBookBtn = document.querySelector(".submit-book-button");
 submitBookBtn.addEventListener('click', () =>
 {
     submitBookTitle = document.querySelector("#title").value;
-    // const book = new Book(submit)
-    console.log(submitBookTitle);
+    submitBookAuthor = document.querySelector('#author').value;
+    isReadCheckbox = document.querySelector('#read').checked;
+    // isRead = isReadCheckbox == "checked" ? true : false;
+
+    book = new Book(submitBookTitle, submitBookAuthor,isReadCheckbox);
+    
+    console.log(book);
 })
 
 
