@@ -5,16 +5,31 @@ const removeBookBtn = document.querySelector(".remove-button");
 const addBookBtn = document.querySelector(".add-book");
 const addShelfBtn = document.querySelector(".add-shelf");
 const markReadBtn = document.querySelector(".read-button");
-const modalCloseBtn = document.querySelector(".modal-close");
+const modalCloseBtns = document.querySelectorAll(".modal-close");
 
-//Modal
-const modal = document.querySelector(".modal");
+//Modals
+const modalAddBook = document.querySelector("#modal-add-book");
 addBookBtn.addEventListener("click", (e) =>
 {
-    modal.style.display = "block";
+    modalAddBook.style.display = "block";
 });
 
-modalCloseBtn.onclick = function()
+const modalAddShelf = document.querySelector("#modal-add-shelf");
+addShelfBtn.addEventListener("click", (e) =>
 {
-    modal.style.display = "none";
+    modalAddShelf.style.display = "block";
+});
+
+modalCloseBtns.forEach(button =>
+    button.addEventListener('click', ()=>
+    {
+        modalAddBook.style.display = "none";
+        modalAddShelf.style.display = "none";
+    }));
+
+
+modalCloseBtns.onclick = function()
+{
+    modalAddBook.style.display = "none";
 }
+
