@@ -67,10 +67,11 @@ submitBookBtn.addEventListener('click', () =>
     submitBookTitle = document.querySelector("#title").value;
     submitBookAuthor = document.querySelector('#author').value;
     isReadCheckbox = document.querySelector('#read').checked;
-    // isRead = isReadCheckbox == "checked" ? true : false;
 
     book = new Book(submitBookTitle, submitBookAuthor,isReadCheckbox);
-    
+    library.push(book);
+
+    modalAddBook.style.display = "none";
     console.log(book);
 })
 
