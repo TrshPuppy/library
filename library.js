@@ -74,18 +74,29 @@ submitBookBtn.addEventListener('click', () =>
     modalAddBook.style.display = "none";
     console.log(book);
 
-    populateDesk();
+    populateDesk(book);
 })
 
 // Populate desk:
-function populateDesk()
+function populateDesk(book)
 {
     let desk = document.querySelector('.desk');
     let bookCard = document.createElement('div');
+    bookCard.classList.add('book-card');
+
+    let bookCardTitle = document.createElement('div');
+    bookCardTitle.classList.add('book-card-title');
+    bookCard.insertAdjacentElement('beforeend', bookCardTitle);
+
+    let bookCardAuthor = document.createElement('div');
+    bookCardAuthor.classList.add('book-card-author');
+    bookCard.insertAdjacentElement('beforeend', bookCardAuthor);
     
     library.forEach(object =>
         {
             desk.insertAdjacentElement('beforeend', bookCard);
+            bookCardTitle.innerText = book.title;
+            bookCardAuthor.innerText = book.author;
         });
 }
 
