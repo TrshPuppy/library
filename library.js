@@ -41,10 +41,14 @@ modalCloseBtns.onclick = function()
 
 modalActual.onclick = function(e)
 {
-    if(e.target !== modalContentBox)
+    if(e.target === modalActual)
     {
         modalAddBook.style.display = "none";
         modalAddShelf.style.display = "none";
+    }
+    else if(e.target === modalContentBox)
+    {
+        return;
     }
 }
 
