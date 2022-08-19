@@ -73,7 +73,21 @@ submitBookBtn.addEventListener('click', () =>
 
     modalAddBook.style.display = "none";
     console.log(book);
+
+    populateDesk();
 })
+
+// Populate desk:
+function populateDesk()
+{
+    let desk = document.querySelector('.desk');
+    let bookCard = document.createElement('div');
+    
+    library.forEach(object =>
+        {
+            desk.insertAdjacentElement('beforeend', bookCard);
+        });
+}
 
 
 
