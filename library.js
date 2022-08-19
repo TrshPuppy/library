@@ -45,27 +45,26 @@ modalActuals.forEach(modalActual =>
     }
     ));
 
-// modalActual.onclick = function(e)
-// {
-//     if(e.target === modalActual)
-//     {
-//         modalAddBook.style.display = "none";
-//         modalAddShelf.style.display = "none";
-//     }
-//     else if(e.target === modalContentBox)
-//     {
-//         return;
-//     }
-// }
+// Fetch add book form input:
+let library = [];
+let submitBookTitle;
+class Book 
+{
+    constructor(title, author, isRead)
+    {
+        this.title = title;
+        this.author = author;
+        this.bookIsRead = isRead;
+    }
+}
 
-// window.onclick = function(e)
-// {
-//     if(modalIsOpen === true && e.target != modalContentBox)
-//     {
-//         // modalAddBook.style.display = "none";
-//         // modalAddShelf.style.display = "none";
+const submitBookBtn = document.querySelector(".submit-book-button");
+submitBookBtn.addEventListener('click', () =>
+{
+    submitBookTitle = document.querySelector("#title").value;
+    // const book = new Book(submit)
+    console.log(submitBookTitle);
+})
 
-//         // modalIsOpen = false;
-//         console.log("hi");
-//     }
-// }
+
+
