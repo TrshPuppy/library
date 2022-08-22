@@ -72,7 +72,6 @@ submitBookBtn.addEventListener('click', () =>
     library.push(book);
 
     modalAddBook.style.display = "none";
-    console.log(book);
 
     populateDesk(book);
 })
@@ -132,22 +131,37 @@ function populateDesk(book)
         removeBookCard(e);
         removeBook(book);        
     });
+
+    // Mark book as read:
+    readButton.addEventListener('click', (e) =>
+    {
+        updateCardtoRead(e);
+        markBookRead(book);
+
+    })
 }
 
 function removeBook(book)
 {
     const currentBookIndex = (element) => element.title === book.title;
     library.splice([currentBookIndex], 1);
-
-
 }
 
 function removeBookCard(e)
 {
-    console.log(e.target.parentElement.parentElement);
     const currentBookCard = e.target.parentElement.parentElement;
     currentBookCard.remove();
-   
+}
+
+function updateCardtoRead(e)
+{
+    const currentBookCard = e.target.parentElement.parentElement;
+    console.log(currentBookCard);
+    currentBookCard.style.borderColor = "red";
+}
+function markBookRead(book)
+{
+
 }
 
 
