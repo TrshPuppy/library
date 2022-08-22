@@ -118,6 +118,7 @@ function populateDesk(book)
     desk = document.querySelector('.desk');
     bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
+    
 
     bookCardTitle = document.createElement('div');
     bookCardTitle.classList.add('book-card-title');
@@ -144,6 +145,12 @@ function populateDesk(book)
     bookCardButtons.insertAdjacentElement('beforeend', readButton);
     bookCardButtons.insertAdjacentElement('beforeend', editButton);
     bookCardButtons.insertAdjacentElement('beforeend', removeCardButton);
+
+    if(book.bookIsRead === true)
+    {
+        bookCard.style.borderColor = 'green';
+        readButton.innerText = 'Mark Un-read';
+    }
     
     library.forEach(object =>
         {
@@ -162,9 +169,18 @@ function populateDesk(book)
     // Mark book as read:
     readButton.addEventListener('click', (e) =>
     {
-        updateCardtoRead(e);
-        markBookRead(book);
+        if(book.bookIsRead === true)
+        {
+            updateCardtoUnread(e);
+            markBookUnread(book);
+        }
+        else
+        {
+            updateCardtoRead(e);
+            markBookRead(book);
+        }
     })
+
 }
 
 function removeBook(book)
@@ -182,14 +198,25 @@ function removeBookCard(e)
 function updateCardtoRead(e)
 {
     const currentBookCard = e.target.parentElement.parentElement;
-    console.log(currentBookCard);
     currentBookCard.style.borderColor = "green";
 
     e.target.innerText = "Mark Un-read";
 }
 function markBookRead(book)
 {
+    book.bookIsRead = true;
+}
 
+function updateCardtoUnread(e)
+{
+    const currentBookCard = e.target.parentElement.parentElement;
+    currentBookCard.style.borderColor = "white";
+
+    e.target.innerText = "Mark Read";
+}
+function markBookUnread(book)
+{
+    book.bookIsRead = false;
 }
 
 
