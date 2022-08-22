@@ -8,6 +8,8 @@ const markReadBtn = document.querySelector(".read-button");
 const modalCloseBtns = document.querySelectorAll(".modal-close");
 const modalContentBox = document.querySelector(".modal-content");
 const modalActuals = document.querySelectorAll(".modal");
+const modalAlertBox = document.querySelector(".modal-alert-box");
+modalAlertBox.style.display = 'none';
 
 //Modals
 // let modalIsOpen = false;
@@ -69,11 +71,21 @@ submitBookBtn.addEventListener('click', () =>
     isReadCheckbox = document.querySelector('#read').checked;
 
     book = new Book(submitBookTitle, submitBookAuthor,isReadCheckbox);
-    library.push(book);
+    const otherBook = (element) =>  element.title === book.title && element.author === book.author;
+    console.log(library.some(otherBook));
 
-    modalAddBook.style.display = "none";
+    if(!library.some(otherBook))
+    {
+        library.push(book);
+        populateDesk(book);
+        modalAddBook.style.display = "none";
+        modalAlertBox.style.display = 'none';
+    }
+    else
+    {
+        modalAlertBox.style.display = 'block';
+    }
 
-    populateDesk(book);
 })
 
 // Populate desk:
@@ -137,13 +149,12 @@ function populateDesk(book)
     {
         updateCardtoRead(e);
         markBookRead(book);
-
     })
 }
 
 function removeBook(book)
 {
-    const currentBookIndex = (element) => element.title === book.title;
+    const currentBookIndex = (element) => element.title === book.title && element.author === book.author;
     library.splice([currentBookIndex], 1);
 }
 

@@ -105,6 +105,13 @@ body.dark
     flex-flow:row nowrap;
     align-items: center;
 }
+.modal-alert-box
+{
+    display:block;
+    font-size: 3vw;
+    color:red;
+    text-align: center;
+}
 /*~~~~~~~~~~~~~~~~~~HEADER~~~~~~~~~~~~~~~~~~~~~*/
 .header
 {
