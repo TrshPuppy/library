@@ -136,8 +136,9 @@ function populateDesk(book)
 
 function removeBookCard(book)
 {
-    const currentBook = (element) => element.title === book.title;
-    console.log(library.findIndex(currentBook));
+    const currentBookIndex = (element) => element.title === book.title;
+    console.log(library.findIndex(currentBookIndex));
+    library.splice([currentBookIndex], 1);
 }
 
 
