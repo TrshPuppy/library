@@ -1,7 +1,7 @@
 // Some globals:
 
 //Buttons
-const removeBookBtn = document.querySelector(".remove-button");
+// const removeBookBtn = document.querySelector(".remove-button");
 const addBookBtn = document.querySelector(".add-book");
 const addShelfBtn = document.querySelector(".add-shelf");
 const markReadBtn = document.querySelector(".read-button");
@@ -78,36 +78,46 @@ submitBookBtn.addEventListener('click', () =>
 })
 
 // Populate desk:
+let desk;
+let bookCard;
+let bookCardTitle;
+let bookCardAuthor;
+let bookCardButtons;
+let readButton;
+let editButton;
+let removeCardButton;
+
 function populateDesk(book)
 {
-    let desk = document.querySelector('.desk');
-    let bookCard = document.createElement('div');
+    desk = document.querySelector('.desk');
+    bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
 
-    let bookCardTitle = document.createElement('div');
+    bookCardTitle = document.createElement('div');
     bookCardTitle.classList.add('book-card-title');
     bookCard.insertAdjacentElement('beforeend', bookCardTitle);
 
-    let bookCardAuthor = document.createElement('div');
+    bookCardAuthor = document.createElement('div');
     bookCardAuthor.classList.add('book-card-author');
     bookCard.insertAdjacentElement('beforeend', bookCardAuthor);
 
-    let bookCardButtons = document.createElement('div');
+    bookCardButtons = document.createElement('div');
     bookCardButtons.classList.add('.book-card-buttons');
     bookCard.insertAdjacentElement('beforeend', bookCardButtons);
     
-    let readButton = document.createElement('button');
+    readButton = document.createElement('button');
     readButton.innerText = "Mark Read";
-    let editButton = document.createElement('button');
+    readButton.classList.add('read-button');
+    editButton = document.createElement('button');
     editButton.innerText = "Edit";
-    let removeButton = document.createElement('button');
-    removeButton.innerText = "Remove";
+    editButton.classList.add('.edit-button');
+    removeCardButton = document.createElement('button');
+    removeCardButton.innerText = "Remove";
+    removeCardButton.classList.add('remove-card-button');
    
     bookCardButtons.insertAdjacentElement('beforeend', readButton);
     bookCardButtons.insertAdjacentElement('beforeend', editButton);
-    bookCardButtons.insertAdjacentElement('beforeend', removeButton);
-    
-
+    bookCardButtons.insertAdjacentElement('beforeend', removeCardButton);
     
     library.forEach(object =>
         {
@@ -116,6 +126,9 @@ function populateDesk(book)
             bookCardAuthor.innerText = book.author;
         });
 }
+
+// Remove book functionality:
+
 
 
 
