@@ -91,6 +91,23 @@ function populateDesk(book)
     let bookCardAuthor = document.createElement('div');
     bookCardAuthor.classList.add('book-card-author');
     bookCard.insertAdjacentElement('beforeend', bookCardAuthor);
+
+    let bookCardButtons = document.createElement('div');
+    bookCardButtons.classList.add('.book-card-buttons');
+    bookCard.insertAdjacentElement('beforeend', bookCardButtons);
+    
+    let readButton = document.createElement('button');
+    readButton.innerText = "Mark Read";
+    let editButton = document.createElement('button');
+    editButton.innerText = "Edit";
+    let removeButton = document.createElement('button');
+    removeButton.innerText = "Remove";
+   
+    bookCardButtons.insertAdjacentElement('beforeend', readButton);
+    bookCardButtons.insertAdjacentElement('beforeend', editButton);
+    bookCardButtons.insertAdjacentElement('beforeend', removeButton);
+    
+
     
     library.forEach(object =>
         {
