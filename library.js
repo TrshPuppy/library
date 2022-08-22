@@ -125,9 +125,20 @@ function populateDesk(book)
             bookCardTitle.innerText = book.title;
             bookCardAuthor.innerText = book.author;
         });
+
+    // Remove book functionality:
+    removeCardButton.addEventListener('click', (e) =>
+    {
+        console.log(e);
+    });
+
+    function removeBookCard()
+    {
+
+
+    }
 }
 
-// Remove book functionality:
 
 
 
