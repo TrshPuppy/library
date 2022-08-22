@@ -1,5 +1,3 @@
-// Some globals:
-
 //Buttons
 // const removeBookBtn = document.querySelector(".remove-button");
 const addBookBtn = document.querySelector(".add-book");
@@ -10,7 +8,9 @@ const modalContentBox = document.querySelector(".modal-content");
 const modalActuals = document.querySelectorAll(".modal");
 const modalAlertBox = document.querySelector(".modal-alert-box");
 modalAlertBox.style.display = 'none';
-const modalInputTexts = document.querySelector('input');
+let modalInputTitle = document.querySelector("#title");
+let modalInputAuthor = document.querySelector("#author");
+// const modalInputTexts = document.querySelector('input');
 
 //Modals
 // let modalIsOpen = false;
@@ -18,6 +18,10 @@ const modalAddBook = document.querySelector("#modal-add-book");
 addBookBtn.addEventListener("click", (e) =>
 {
     modalAddBook.style.display = "block";
+    console.log(modalInputAuthor);
+    // modalInputTitle = "";
+     modalInputTitle.value = "";
+     modalInputAuthor.value = "";
 });
 
 const modalAddShelf = document.querySelector("#modal-add-shelf");
@@ -32,9 +36,6 @@ modalCloseBtns.forEach(button =>
         modalAddBook.style.display = "none";
         modalAddShelf.style.display = "none";
         modalAlertBox.style.display = "none";
-
-        document.querySelector("#title").value = "";
-        document.querySelector('#author').value = "";
     }));
 
 modalActuals.forEach(modalActual =>
@@ -44,9 +45,6 @@ modalActuals.forEach(modalActual =>
         {
             modalAddBook.style.display = "none";
             modalAddShelf.style.display = "none";
-
-            document.querySelector("#title").value = "";
-            document.querySelector('#author').value = "";
         }
         else if(e.target === modalContentBox)
         {
@@ -78,24 +76,31 @@ submitBookBtn.addEventListener('click', () =>
     submitBookAuthor = document.querySelector('#author').value;
     isReadCheckbox = document.querySelector('#read').checked;
 
-    book = new Book(submitBookTitle, submitBookAuthor,isReadCheckbox);
-    const otherBook = (element) =>  element.title === book.title && element.author === book.author;
-    console.log(library.some(otherBook));
-
-    if(!library.some(otherBook))
+    if(submitBookTitle === "" || submitBookAuthor === "")
     {
-        library.push(book);
-        populateDesk(book);
-        modalAddBook.style.display = "none";
-        modalAlertBox.style.display = 'none';
+        modalAlertBox.style.display = "block";
+        modalAlertBox.innerText = "Please add the required information!";
     }
     else
     {
-        modalAlertBox.style.display = 'block';
+        book = new Book(submitBookTitle, submitBookAuthor,isReadCheckbox);
+
+        const otherBook = (element) =>  element.title === book.title && element.author === book.author;
+
+        if(!library.some(otherBook))
+        {
+            library.push(book);
+            populateDesk(book);
+            modalAddBook.style.display = "none";
+            modalAlertBox.style.display = 'none';
+        }
+        else
+        {
+            modalAlertBox.style.display = 'block';
+            modalAlertBox.innerText = "That book already exists in your library!";
+        }
     }
 
-    document.querySelector("#title").value = "";
-    document.querySelector('#author').value = "";
 })
 
 // Populate desk:
@@ -151,7 +156,7 @@ function populateDesk(book)
     removeCardButton.addEventListener('click', (e) =>
     {
         removeBookCard(e);
-        removeBook(book);        
+        removeBook(book);
     });
 
     // Mark book as read:
