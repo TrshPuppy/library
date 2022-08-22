@@ -129,16 +129,25 @@ function populateDesk(book)
     // Remove book functionality:
     removeCardButton.addEventListener('click', (e) =>
     {
-        console.log(book.title);
-        removeBookCard(book);        
+        removeBookCard(e);
+        removeBook(book);        
     });
 }
 
-function removeBookCard(book)
+function removeBook(book)
 {
     const currentBookIndex = (element) => element.title === book.title;
-    console.log(library.findIndex(currentBookIndex));
     library.splice([currentBookIndex], 1);
+
+
+}
+
+function removeBookCard(e)
+{
+    console.log(e.target.parentElement.parentElement);
+    const currentBookCard = e.target.parentElement.parentElement;
+    currentBookCard.remove();
+   
 }
 
 
