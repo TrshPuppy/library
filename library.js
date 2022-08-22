@@ -129,7 +129,7 @@ function populateDesk(book)
     // Remove book functionality:
     removeCardButton.addEventListener('click', (e) =>
     {
-        console.log(e);
+        console.log(book.title) // ◀ here is the title you need
     });
 
     function removeBookCard()
