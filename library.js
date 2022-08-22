@@ -10,6 +10,7 @@ const modalContentBox = document.querySelector(".modal-content");
 const modalActuals = document.querySelectorAll(".modal");
 const modalAlertBox = document.querySelector(".modal-alert-box");
 modalAlertBox.style.display = 'none';
+const modalInputTexts = document.querySelector('input');
 
 //Modals
 // let modalIsOpen = false;
@@ -30,6 +31,10 @@ modalCloseBtns.forEach(button =>
     {
         modalAddBook.style.display = "none";
         modalAddShelf.style.display = "none";
+        modalAlertBox.style.display = "none";
+
+        document.querySelector("#title").value = "";
+        document.querySelector('#author').value = "";
     }));
 
 modalActuals.forEach(modalActual =>
@@ -39,6 +44,9 @@ modalActuals.forEach(modalActual =>
         {
             modalAddBook.style.display = "none";
             modalAddShelf.style.display = "none";
+
+            document.querySelector("#title").value = "";
+            document.querySelector('#author').value = "";
         }
         else if(e.target === modalContentBox)
         {
@@ -86,6 +94,8 @@ submitBookBtn.addEventListener('click', () =>
         modalAlertBox.style.display = 'block';
     }
 
+    document.querySelector("#title").value = "";
+    document.querySelector('#author').value = "";
 })
 
 // Populate desk:
