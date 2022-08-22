@@ -157,7 +157,9 @@ function updateCardtoRead(e)
 {
     const currentBookCard = e.target.parentElement.parentElement;
     console.log(currentBookCard);
-    currentBookCard.style.borderColor = "red";
+    currentBookCard.style.borderColor = "green";
+
+    e.target.innerText = "Mark Un-read";
 }
 function markBookRead(book)
 {
