@@ -10,6 +10,7 @@ const modalAlertBox = document.querySelector(".modal-alert-box");
 modalAlertBox.style.display = 'none';
 let modalInputTitle = document.querySelector("#title");
 let modalInputAuthor = document.querySelector("#author");
+const modalEditBook = document.querySelector("#modal-edit-book");
 // const modalInputTexts = document.querySelector('input');
 
 //Modals
@@ -100,7 +101,6 @@ submitBookBtn.addEventListener('click', () =>
             modalAlertBox.innerText = "That book already exists in your library!";
         }
     }
-
 })
 
 // Populate desk:
@@ -181,6 +181,11 @@ function populateDesk(book)
         }
     })
 
+    // Edit book card:
+    editButton.addEventListener('click', (e) =>
+    {
+        editBookCard(book);
+    })
 }
 
 function removeBook(book)
@@ -219,7 +224,8 @@ function markBookUnread(book)
     book.bookIsRead = false;
 }
 
-
-
-
-
+function editBookCard(book)
+{
+    console.log(book);
+    modalEditBook.style.display = 'block';
+}
