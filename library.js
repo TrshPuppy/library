@@ -11,7 +11,9 @@ modalAlertBox.style.display = 'none';
 let modalInputTitle = document.querySelector("#title");
 let modalInputAuthor = document.querySelector("#author");
 const modalEditBook = document.querySelector("#modal-edit-book");
-// const modalInputTexts = document.querySelector('input');
+let modalEditTitle = document.querySelector('.edit-title');
+let modalEditAuthor = document.querySelector('.edit-author');
+let modalEditCheckbox = document.querySelector('.edit-read');
 
 //Modals
 // let modalIsOpen = false;
@@ -228,4 +230,12 @@ function editBookCard(book)
 {
     console.log(book);
     modalEditBook.style.display = 'block';
+    modalEditTitle.value = book.title;
+    modalEditAuthor.value = book.author;
+    if(book.bookIsRead === true)
+    {
+        modalEditCheckbox.checked = true;
+    }
+
+
 }
