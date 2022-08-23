@@ -14,6 +14,8 @@ const modalEditBook = document.querySelector("#modal-edit-book");
 let modalEditTitle = document.querySelector('.edit-title');
 let modalEditAuthor = document.querySelector('.edit-author');
 let modalEditCheckbox = document.querySelector('.edit-read');
+const editSubmitBtn = document.querySelector('#submit-edit-book-btn');
+const editModalAlert = document.querySelector('#modal-edit-alert');
 
 //Modals
 // let modalIsOpen = false;
@@ -21,8 +23,6 @@ const modalAddBook = document.querySelector("#modal-add-book");
 addBookBtn.addEventListener("click", (e) =>
 {
     modalAddBook.style.display = "block";
-    console.log(modalInputAuthor);
-    // modalInputTitle = "";
      modalInputTitle.value = "";
      modalInputAuthor.value = "";
 });
@@ -39,6 +39,7 @@ modalCloseBtns.forEach(button =>
         modalAddBook.style.display = "none";
         modalAddShelf.style.display = "none";
         modalAlertBox.style.display = "none";
+        modalEditBook.style.display = "none";
     }));
 
 modalActuals.forEach(modalActual =>
@@ -48,6 +49,7 @@ modalActuals.forEach(modalActual =>
         {
             modalAddBook.style.display = "none";
             modalAddShelf.style.display = "none";
+            modalEditBook.style.display = "none";
         }
         else if(e.target === modalContentBox)
         {
@@ -79,14 +81,44 @@ submitBookBtn.addEventListener('click', () =>
     submitBookAuthor = document.querySelector('#author').value;
     isReadCheckbox = document.querySelector('#read').checked;
 
-    if(submitBookTitle === "" || submitBookAuthor === "")
+    createBook(submitBookTitle, submitBookAuthor,isReadCheckbox);
+
+    // if(submitBookTitle === "" || submitBookAuthor === "")
+    // {
+    //     modalAlertBox.style.display = "block";
+    //     modalAlertBox.innerText = "Please add the required information!";
+    // }
+    // else
+    // {
+    //     book = new Book(submitBookTitle, submitBookAuthor,isReadCheckbox);
+
+    //     const otherBook = (element) =>  element.title === book.title && element.author === book.author;
+
+    //     if(!library.some(otherBook))
+    //     {
+    //         library.push(book);
+    //         populateDesk(book);
+    //         modalAddBook.style.display = "none";
+    //         modalAlertBox.style.display = 'none';
+    //     }
+    //     else
+    //     {
+    //         modalAlertBox.style.display = 'block';
+    //         modalAlertBox.innerText = "That book already exists in your library!";
+    //     }
+    // }
+})
+
+function createBook(title, author, isRead)
+{
+    if(title === "" || author === "")
     {
         modalAlertBox.style.display = "block";
         modalAlertBox.innerText = "Please add the required information!";
     }
     else
     {
-        book = new Book(submitBookTitle, submitBookAuthor,isReadCheckbox);
+        book = new Book(title, author,isRead);
 
         const otherBook = (element) =>  element.title === book.title && element.author === book.author;
 
@@ -100,10 +132,12 @@ submitBookBtn.addEventListener('click', () =>
         else
         {
             modalAlertBox.style.display = 'block';
+            editModalAlert.style.display = 'block';
+            editModalAlert.innerText = "That book already exists in your library!";
             modalAlertBox.innerText = "That book already exists in your library!";
         }
     }
-})
+}
 
 // Populate desk:
 let desk;
@@ -120,7 +154,6 @@ function populateDesk(book)
     desk = document.querySelector('.desk');
     bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
-    
 
     bookCardTitle = document.createElement('div');
     bookCardTitle.classList.add('book-card-title');
@@ -186,7 +219,8 @@ function populateDesk(book)
     // Edit book card:
     editButton.addEventListener('click', (e) =>
     {
-        editBookCard(book);
+         console.log(editBookCard(book,e));
+        // populateDesk(editedBook);
     })
 }
 
@@ -226,16 +260,48 @@ function markBookUnread(book)
     book.bookIsRead = false;
 }
 
-function editBookCard(book)
+function editBookCard(book,e)
 {
-    console.log(book);
+    removeBookCard(e);
+
     modalEditBook.style.display = 'block';
     modalEditTitle.value = book.title;
     modalEditAuthor.value = book.author;
+    
     if(book.bookIsRead === true)
     {
         modalEditCheckbox.checked = true;
     }
+    else if(book.bookIsRead === false)
+    {
+        modalEditCheckbox.checked = false;
+    }
 
+    editSubmitBtn.addEventListener('click', () =>
+    {
+        createBook(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.checked);
+        //    editedBook = new Book(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.value);
 
+    //     populateDesk(editedBook);
+
+       
+       
+        // book.title = modalEditTitle.value;
+        // book.author = modalEditAuthor.value;
+        // if(modalEditCheckbox.checked)
+        // {
+        //     book.bookIsRead = true;
+        // }
+        // else
+        // {
+        //     book.bookIsRead = false;
+        // }
+
+        // modalEditBook.style.display = 'none';
+                // populateDesk(book);
+       
+
+    })
+    // console.log(editedBook);
+    return;
 }
