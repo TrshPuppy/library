@@ -266,28 +266,30 @@ function markBookUnread(book)
     book.bookIsRead = false;
 }
 
-function editBookCard(book,e)
+function editBookCard(oldBook,e)
 {
     removeBookCard(e);
 
     modalEditBook.style.display = 'block';
-    modalEditTitle.value = book.title;
-    modalEditAuthor.value = book.author;
+    modalEditTitle.value = oldBook.title;
+    modalEditAuthor.value = oldBook.author;
     
-    if(book.bookIsRead === true)
+    if(oldBook.bookIsRead === true)
     {
         modalEditCheckbox.checked = true;
     }
-    else if(book.bookIsRead === false)
+    else if(oldBook.bookIsRead === false)
     {
         modalEditCheckbox.checked = false;
     }
 
+    removeBook(oldBook);
     editSubmitBtn.addEventListener('click', () =>
     {
-        let editedBook = (createBook(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.checked));
+        createBook(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.checked);
         
-        removeBook(book);
+        
+        
 
         //    editedBook = new Book(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.value);
 
@@ -312,6 +314,6 @@ function editBookCard(book,e)
 
     })
     // console.log(book);
-  
+    
     return;
 }
