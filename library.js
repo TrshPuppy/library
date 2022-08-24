@@ -231,9 +231,10 @@ function populateDesk(book)
 
 function removeBook(book)
 {
-   console.log(book);
-    const currentBookIndex = (element) => element.title === book.title && element.author === book.author;
-    library.splice([currentBookIndex], 1);
+    const currentBook = (element) => element.title === book.title && element.author === book.author;
+    const currentBookIndex = library.findIndex(currentBook);
+    
+    library.splice(currentBookIndex, 1);
 }
 
 function removeBookCard(e)
@@ -286,7 +287,7 @@ function editBookCard(book,e)
     {
         let editedBook = (createBook(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.checked));
         
-        removeBook(editedBook);
+        removeBook(book);
 
         //    editedBook = new Book(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.value);
 
