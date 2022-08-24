@@ -3,6 +3,7 @@
 const addBookBtn = document.querySelector(".add-book");
 const addShelfBtn = document.querySelector(".add-shelf");
 const markReadBtn = document.querySelector(".read-button");
+
 const modalCloseBtns = document.querySelectorAll(".modal-close");
 const modalContentBox = document.querySelector(".modal-content");
 const modalActuals = document.querySelectorAll(".modal");
@@ -14,7 +15,7 @@ const modalEditBook = document.querySelector("#modal-edit-book");
 let modalEditTitle = document.querySelector('.edit-title');
 let modalEditAuthor = document.querySelector('.edit-author');
 let modalEditCheckbox = document.querySelector('.edit-read');
-const editSubmitBtn = document.querySelector('#submit-edit-book-btn');
+
 const editModalAlert = document.querySelector('#modal-edit-alert');
 
 //Modals
@@ -128,17 +129,16 @@ function createBook(title, author, isRead)
             populateDesk(book);
             modalAddBook.style.display = "none";
             modalAlertBox.style.display = 'none';
-            modalEditBook.style.display = 'none';
         }
         else
         {
             modalAlertBox.style.display = 'block';
             editModalAlert.style.display = 'block';
             editModalAlert.innerText = "That book already exists in your library!";
-            // modalAlertBox.innerText = "That book already exists in your library!";
+            modalAlertBox.innerText = "That book already exists in your library!";
         }
     }
-    return book;
+    return;
 }
 
 // Populate desk:
@@ -192,12 +192,6 @@ function populateDesk(book)
     desk.insertAdjacentElement('beforeend', bookCard);
     bookCardTitle.innerText = book.title;
     bookCardAuthor.innerText = book.author;
-    // library.forEach(object =>
-    //     {
-    //         desk.insertAdjacentElement('beforeend', bookCard);
-    //         bookCardTitle.innerText = book.title;
-    //         bookCardAuthor.innerText = book.author;
-    //     });
 
     // Remove book functionality:
     removeCardButton.addEventListener('click', (e) =>
@@ -224,15 +218,19 @@ function populateDesk(book)
     // Edit book card:
     editButton.addEventListener('click', (e) =>
     {
+        console.log(book);
         editBookCard(book,e);
-        // populateDesk(editedBook);
+        
     })
+    return;
 }
 
 function removeBook(book)
 {
-    const currentBook = (element) => element.title === book.title && element.author === book.author;
-    const currentBookIndex = library.findIndex(currentBook);
+    // const currentBook = (element) => element.title === book.title && element.author === book.author;
+    let currentBookIndex = library.findIndex(bookObject => book.title === bookObject.title && book.author === bookObject.author);
+
+    
     
     library.splice(currentBookIndex, 1);
 }
@@ -268,11 +266,11 @@ function markBookUnread(book)
 
 function editBookCard(oldBook,e)
 {
-    removeBookCard(e);
-
+    
     modalEditBook.style.display = 'block';
     modalEditTitle.value = oldBook.title;
     modalEditAuthor.value = oldBook.author;
+    const editSubmitBtn = document.querySelector('#submit-edit-book-btn');
     
     if(oldBook.bookIsRead === true)
     {
@@ -283,37 +281,53 @@ function editBookCard(oldBook,e)
         modalEditCheckbox.checked = false;
     }
 
-    removeBook(oldBook);
     editSubmitBtn.addEventListener('click', () =>
     {
-        createBook(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.checked);
-        
-        
-        
+        console.log('hi');
+        editBookinArray(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.checked, oldBook);
 
-        //    editedBook = new Book(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.value);
+        removeBookCard(e);
+        // removeBook(oldBook);
+        // createBook(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.checked);
 
-    //     populateDesk(editedBook);
+        modalEditBook.value = "";
+        modalEditAuthor.value = "";
+        modalEditCheckbox.checked = false;
+    })
+    return;
+}
 
-       
-       
-        // book.title = modalEditTitle.value;
-        // book.author = modalEditAuthor.value;
-        // if(modalEditCheckbox.checked)
+function editBookinArray(title, author, isRead, book)
+{
+    if(title === "" || author === "")
+    {
+        modalAlertBox.style.display = "block";
+        modalAlertBox.innerText = "Please add the required information!";
+    }
+    else
+    {
+        book.title = title;
+        book.author = author;
+        book.isRead = isRead;
+        console.log(book);
+        populateDesk(book);
+
+        modalEditBook.style.display = 'none';
+
+        // if(library.some(otherBook))
         // {
-        //     book.bookIsRead = true;
+            
+        //     // modalAddBook.style.display = "none";
+        //     // modalAlertBox.style.display = 'none';
+        //     // modalEditBook.style.display = 'none';
         // }
         // else
         // {
-        //     book.bookIsRead = false;
+        //     // modalAlertBox.style.display = 'block';
+        //     // editModalAlert.style.display = 'block';
+        //     // editModalAlert.innerText = "That book already exists in your library!";
+        //     // modalAlertBox.innerText = "That book already exists in your library!";
         // }
-
-        // modalEditBook.style.display = 'none';
-                // populateDesk(book);
-       
-
-    })
-    // console.log(book);
-    
+    }
     return;
 }
