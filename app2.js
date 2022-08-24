@@ -23,8 +23,6 @@ let modalInputAuthor = document.querySelector("#author");
 let modalCheckBox = document.querySelector('.read');
 const submitBookBtn = document.querySelector('.submit-book-button');
 
-
-
 function displayAddModal()
 {
     modalActual.style.display = 'block';
@@ -32,8 +30,20 @@ function displayAddModal()
 
 function createBookObject(title, author, isRead)
 {
-    console.log(author);
-    console.log(isRead);
+    book = new Book(title, author, isRead);
+    return book;
+}
+
+function addBookToLibrary(book)
+{
+    const otherBook = (element) =>  element.title === book.title && element.author === book.author;
+
+        if(!library.some(otherBook))
+        {
+            library.push(book);
+            return true;
+        }
+    return false;
 }
 
 modalCloseBtn.addEventListener('click', () =>
@@ -48,5 +58,12 @@ addBookBtn.addEventListener('click', () =>
 
 submitBookBtn.addEventListener('click', () =>
 {
-    createBookObject(modalInputTitle.value, modalInputAuthor.value, modalCheckBox.checked);
+    let bookAddedToLibrary = addBookToLibrary(createBookObject(modalInputTitle.value, modalInputAuthor.value, modalCheckBox.checked));
+
+    if(bookAddedToLibrary)
+    {
+        modalActual.style.display = 'none';
+    }
+
+   
 })
