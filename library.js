@@ -128,19 +128,21 @@ function createBook(title, author, isRead)
             populateDesk(book);
             modalAddBook.style.display = "none";
             modalAlertBox.style.display = 'none';
+            modalEditBook.style.display = 'none';
         }
         else
         {
             modalAlertBox.style.display = 'block';
             editModalAlert.style.display = 'block';
             editModalAlert.innerText = "That book already exists in your library!";
-            modalAlertBox.innerText = "That book already exists in your library!";
+            // modalAlertBox.innerText = "That book already exists in your library!";
         }
     }
+    return book;
 }
 
 // Populate desk:
-let desk;
+let desk = document.querySelector('.desk');
 let bookCard;
 let bookCardTitle;
 let bookCardAuthor;
@@ -149,9 +151,9 @@ let readButton;
 let editButton;
 let removeCardButton;
 
+
 function populateDesk(book)
 {
-    desk = document.querySelector('.desk');
     bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
 
@@ -187,12 +189,15 @@ function populateDesk(book)
         readButton.innerText = 'Mark Un-read';
     }
     
-    library.forEach(object =>
-        {
-            desk.insertAdjacentElement('beforeend', bookCard);
-            bookCardTitle.innerText = book.title;
-            bookCardAuthor.innerText = book.author;
-        });
+    desk.insertAdjacentElement('beforeend', bookCard);
+    bookCardTitle.innerText = book.title;
+    bookCardAuthor.innerText = book.author;
+    // library.forEach(object =>
+    //     {
+    //         desk.insertAdjacentElement('beforeend', bookCard);
+    //         bookCardTitle.innerText = book.title;
+    //         bookCardAuthor.innerText = book.author;
+    //     });
 
     // Remove book functionality:
     removeCardButton.addEventListener('click', (e) =>
@@ -219,13 +224,14 @@ function populateDesk(book)
     // Edit book card:
     editButton.addEventListener('click', (e) =>
     {
-         console.log(editBookCard(book,e));
+        editBookCard(book,e);
         // populateDesk(editedBook);
     })
 }
 
 function removeBook(book)
 {
+   console.log(book);
     const currentBookIndex = (element) => element.title === book.title && element.author === book.author;
     library.splice([currentBookIndex], 1);
 }
@@ -252,7 +258,6 @@ function updateCardtoUnread(e)
 {
     const currentBookCard = e.target.parentElement.parentElement;
     currentBookCard.style.borderColor = "white";
-
     e.target.innerText = "Mark Read";
 }
 function markBookUnread(book)
@@ -279,7 +284,10 @@ function editBookCard(book,e)
 
     editSubmitBtn.addEventListener('click', () =>
     {
-        createBook(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.checked);
+        let editedBook = (createBook(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.checked));
+        
+        removeBook(editedBook);
+
         //    editedBook = new Book(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.value);
 
     //     populateDesk(editedBook);
@@ -302,6 +310,7 @@ function editBookCard(book,e)
        
 
     })
-    // console.log(editedBook);
+    // console.log(book);
+  
     return;
 }
