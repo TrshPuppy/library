@@ -122,7 +122,9 @@ function rebuildAllCards()
 
 function removeBookFromLibrary(book)
 {
-    let currentBookIndex = library.findIndex(bookObject => book.title === bookObject.title && book.author === bookObject.author);
+    // let currentBookIndex = library.findIndex(bookObject => book.title === bookObject.title && book.author === bookObject.author);
+
+    const currentBookIndex = library.indexOf(book);
 
     library.splice(currentBookIndex, 1);
     rebuildAllCards();
@@ -139,6 +141,7 @@ function editBookInLibrary(oldBook)
     bookBeingEdited = oldBook;
 
 }
+
 // Event Listeners:
 addBookBtn.addEventListener('click', () =>
 {
