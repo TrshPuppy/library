@@ -109,6 +109,12 @@ function populateDeskCard(book)
         editBookInLibrary(book);
         displayAddModal(modalEditBook);
     })
+
+    readButton.addEventListener('click', () =>
+    {
+        book.isRead = !book.isRead;
+        updateUI();
+    })
 }
 
 function rebuildAllCards()
