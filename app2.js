@@ -44,7 +44,6 @@ function displayAddModal(modal)
 
 function createBookObject(title, author, isRead)
 {
-    
     book = new Book(title, author, isRead);
     return book;
 }
@@ -53,7 +52,7 @@ function addBookToLibrary(book)
 {
     const otherBook = (element) =>  element.title === book.title && element.author === book.author;
 
-        if(!library.some(otherBook) && !(book.title == "" || book.author == ""))
+        if(!library.some(otherBook) && !(book.title.trim() == "" || book.author.trim() == ""))
         {
             library.push(book);
             return true;
