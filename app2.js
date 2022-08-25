@@ -163,6 +163,7 @@ submitEditedBookBtn.addEventListener('click', (e) =>
     bookBeingEdited.isRead = modalEditCheckbox.checked;
 
     rebuildAllCards();
+    e.target.parentElement.parentElement.parentElement.style.display = 'none';
 })
 
 modalCloseBtns.forEach(button =>
