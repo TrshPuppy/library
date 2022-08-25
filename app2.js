@@ -52,13 +52,18 @@ function addBookToLibrary(book)
 {
     const otherBook = (element) =>  element.title === book.title && element.author === book.author;
 
-        if(!library.some(otherBook) && !(book.title.trim() == "" || book.author.trim() == ""))
-        {
-            library.push(book);
-            return true;
-        }
+    const alreadyExists = library.some(otherBook);
+    const isInvalidInput = book.title.trim() == "" || book.author.trim() == "";
 
-    return false;
+    if(alreadyExists || isInvalidInput) return {success:false, error: alreadyExists ? 'This book already exists!': 'Title and/or Author invalid.'}
+   
+        // if(!library.some(otherBook) && !(book.title.trim() == "" || book.author.trim() == ""))
+        // {
+    library.push(book);
+        //     return {success:true}
+        // }
+         
+    return {success:true};
 }
 
 function populateDeskCard(book)
@@ -184,10 +189,16 @@ submitBookBtn.addEventListener('click', () =>
 {
     let bookAddedToLibrary = addBookToLibrary(createBookObject(modalInputTitle.value, modalInputAuthor.value, modalCheckBox.checked));
 
-    if(bookAddedToLibrary)
+    if(bookAddedToLibrary.success)
     {
         modalActual.style.display = 'none';
         updateUI();
+        modalAlertBox.style.display = 'none';
+    }
+    else
+    {
+        modalAlertBox.style.display = 'block';
+        modalAlertBox.innerText = bookAddedToLibrary.error;
     }
 })
 
@@ -202,7 +213,7 @@ submitEditedBookBtn.addEventListener('click', (e) =>
     bookBeingEdited.title = modalEditTitle.value;
     bookBeingEdited.author = modalEditAuthor.value;
     bookBeingEdited.isRead = modalEditCheckbox.checked;
-    console.log(modalEditCheckbox.checked);
+   
     updateUI();
     modalEditAlertBox.style.display = 'none';
     e.target.parentElement.parentElement.parentElement.style.display = 'none';
