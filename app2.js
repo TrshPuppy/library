@@ -4,7 +4,7 @@ class Book
     {
         this.title = title;
         this.author = author;
-        this.bookIsRead = isRead;
+        this.isRead = isRead;
     }
 }
 
@@ -86,7 +86,7 @@ function populateDeskCard(book)
     bookCardButtons.insertAdjacentElement('beforeend', editButton);
     bookCardButtons.insertAdjacentElement('beforeend', removeCardButton);
 
-    if(book.bookIsRead === true)
+    if(book.isRead === true)
     {
         bookCard.style.borderColor = 'green';
         readButton.innerText = 'Mark Un-read';
@@ -174,7 +174,7 @@ submitEditedBookBtn.addEventListener('click', (e) =>
     bookBeingEdited.title = modalEditTitle.value;
     bookBeingEdited.author = modalEditAuthor.value;
     bookBeingEdited.isRead = modalEditCheckbox.checked;
-
+    console.log(modalEditCheckbox.checked);
     rebuildAllCards();
     modalEditAlertBox.style.display = 'none';
     e.target.parentElement.parentElement.parentElement.style.display = 'none';
