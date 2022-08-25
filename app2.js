@@ -37,6 +37,9 @@ const submitEditedBookBtn = document.querySelector('#submit-edit-book-btn');
 function displayAddModal(modal)
 {
     modal.style.display = 'block';
+    modalInputTitle.value = "";
+    modalInputAuthor.value = "";
+    modalCheckBox.checked = false;
 }
 
 function createBookObject(title, author, isRead)
