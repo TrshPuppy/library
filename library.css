@@ -107,8 +107,8 @@ body.dark
 }
 .modal-alert-box
 {
-    display:block;
-    font-size: 3vw;
+    display:none;
+    font-size: 1rem;
     color:red;
     text-align: center;
 }

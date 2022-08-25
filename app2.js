@@ -19,7 +19,6 @@ const modalCloseBtns = document.querySelectorAll(".modal-close");
 const modalContentBox = document.querySelector(".modal-content");
 const modalActual = document.querySelector(".modal");
 const modalAlertBox = document.querySelector(".modal-alert-box");
-modalAlertBox.style.display = 'none';
 let modalInputTitle = document.querySelector("#title");
 let modalInputAuthor = document.querySelector("#author");
 let modalCheckBox = document.querySelector('.read');
@@ -29,14 +28,13 @@ const modalEditBook = document.querySelector("#modal-edit-book");
 let modalEditTitle = document.querySelector('.edit-title');
 let modalEditAuthor = document.querySelector('.edit-author');
 let modalEditCheckbox = document.querySelector('.edit-read');
+const modalEditAlertBox = document.querySelector('#modal-edit-alert');
 const submitEditedBookBtn = document.querySelector('#submit-edit-book-btn');
 
 // Functions:
 function displayAddModal(modal)
 {
     modal.style.display = 'block';
-
-    
 }
 
 function createBookObject(title, author, isRead)
@@ -138,11 +136,10 @@ function editBookInLibrary(oldBook)
     modalEditAuthor.value = oldBook.author;
     modalEditCheckbox.checked = oldBook.isRead;
 
-
     bookBeingEdited = oldBook;
 }
 
-function checkForDuplicateInLibrary(title, author, isRead)
+function isDuplicateInLibrary(title, author)
 {
     const duplicateBookIndex = library.findIndex(b => b !== bookBeingEdited && b.title === title && b.author === author);
 
@@ -168,8 +165,9 @@ submitBookBtn.addEventListener('click', () =>
 
 submitEditedBookBtn.addEventListener('click', (e) =>
 {
-    if(checkForDuplicateInLibrary(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.checked))
+    if(isDuplicateInLibrary(modalEditTitle.value, modalEditAuthor.value))
     {
+        modalEditAlertBox.style.display = 'block';
         return;
     }
 
@@ -178,6 +176,7 @@ submitEditedBookBtn.addEventListener('click', (e) =>
     bookBeingEdited.isRead = modalEditCheckbox.checked;
 
     rebuildAllCards();
+    modalEditAlertBox.style.display = 'none';
     e.target.parentElement.parentElement.parentElement.style.display = 'none';
 })
 
