@@ -223,6 +223,9 @@ modalCloseBtns.forEach(button =>
 {
     button.addEventListener('click', (e) =>
     {
+        modalAlertBox.style.display = 'none';
+        modalEditAlertBox.style.display = 'none';
         e.target.parentElement.parentElement.style.display = 'none';
+        console.log(e);
     })
 })
