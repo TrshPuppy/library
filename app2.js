@@ -14,6 +14,8 @@ let library = [];
 const addBookBtn = document.querySelector(".add-book");
 let desk = document.querySelector('.desk');
 let bookBeingEdited;
+const readTally = document.querySelector('.read-tally');
+const unreadTally = document.querySelector('.unread-tally');
 
 const modalCloseBtns = document.querySelectorAll(".modal-close");
 const modalContentBox = document.querySelector(".modal-content");
@@ -106,7 +108,6 @@ function populateDeskCard(book)
     {
         editBookInLibrary(book);
         displayAddModal(modalEditBook);
-       
     })
 }
 
@@ -125,7 +126,7 @@ function removeBookFromLibrary(book)
     const currentBookIndex = library.indexOf(book);
 
     library.splice(currentBookIndex, 1);
-    rebuildAllCards();
+    updateUI();
 }
 
 function editBookInLibrary(oldBook)
@@ -146,6 +147,23 @@ function isDuplicateInLibrary(title, author)
     return duplicateBookIndex !== -1;
 }
 
+function updateCounters()
+{
+    const totalBooksRead = library.filter(b => b.isRead).length;
+    const totalBooks = library.length;
+    const totalBooksUnread = totalBooks - totalBooksRead;
+
+    unreadTally.innerText = `(${totalBooksUnread})`;
+    readTally.innerText = `(${totalBooksRead})`;
+
+}
+
+function updateUI()
+{
+    updateCounters();
+    rebuildAllCards();
+}
+
 // Event Listeners:
 addBookBtn.addEventListener('click', () =>
 {
@@ -159,7 +177,7 @@ submitBookBtn.addEventListener('click', () =>
     if(bookAddedToLibrary)
     {
         modalActual.style.display = 'none';
-        rebuildAllCards();
+        updateUI();
     }
 })
 
@@ -175,7 +193,7 @@ submitEditedBookBtn.addEventListener('click', (e) =>
     bookBeingEdited.author = modalEditAuthor.value;
     bookBeingEdited.isRead = modalEditCheckbox.checked;
     console.log(modalEditCheckbox.checked);
-    rebuildAllCards();
+    updateUI();
     modalEditAlertBox.style.display = 'none';
     e.target.parentElement.parentElement.parentElement.style.display = 'none';
 })

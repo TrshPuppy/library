@@ -267,7 +267,7 @@ button:active
     color:var(--secondary-font-color);
     padding:3px;
 }
-.tally
+.read-tally, .unread-tally
 {
     padding:0 10px;
 }
