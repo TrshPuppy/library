@@ -138,8 +138,15 @@ function editBookInLibrary(oldBook)
     modalEditAuthor.value = oldBook.author;
     modalEditCheckbox.checked = oldBook.isRead;
 
-    bookBeingEdited = oldBook;
 
+    bookBeingEdited = oldBook;
+}
+
+function checkForDuplicateInLibrary(title, author, isRead)
+{
+    const duplicateBookIndex = library.findIndex(b => b !== bookBeingEdited && b.title === title && b.author === author);
+
+    return duplicateBookIndex !== -1;
 }
 
 // Event Listeners:
@@ -161,6 +168,11 @@ submitBookBtn.addEventListener('click', () =>
 
 submitEditedBookBtn.addEventListener('click', (e) =>
 {
+    if(checkForDuplicateInLibrary(modalEditTitle.value, modalEditAuthor.value, modalEditCheckbox.checked))
+    {
+        return;
+    }
+
     bookBeingEdited.title = modalEditTitle.value;
     bookBeingEdited.author = modalEditAuthor.value;
     bookBeingEdited.isRead = modalEditCheckbox.checked;
