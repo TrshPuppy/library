@@ -46,6 +46,68 @@ function addBookToLibrary(book)
     return false;
 }
 
+function populateDeskCard(book)
+{
+    bookCard = document.createElement('div');
+    bookCard.classList.add('book-card');
+
+    bookCardTitle = document.createElement('div');
+    bookCardTitle.classList.add('book-card-title');
+    bookCard.insertAdjacentElement('beforeend', bookCardTitle);
+
+    bookCardAuthor = document.createElement('div');
+    bookCardAuthor.classList.add('book-card-author');
+    bookCard.insertAdjacentElement('beforeend', bookCardAuthor);
+
+    bookCardButtons = document.createElement('div');
+    bookCardButtons.classList.add('.book-card-buttons');
+    bookCard.insertAdjacentElement('beforeend', bookCardButtons);
+    
+    readButton = document.createElement('button');
+    readButton.innerText = "Mark Read";
+    readButton.classList.add('read-button');
+    editButton = document.createElement('button');
+    editButton.innerText = "Edit";
+    editButton.classList.add('.edit-button');
+    removeCardButton = document.createElement('button');
+    removeCardButton.innerText = "Remove";
+    removeCardButton.classList.add('remove-card-button');
+   
+    bookCardButtons.insertAdjacentElement('beforeend', readButton);
+    bookCardButtons.insertAdjacentElement('beforeend', editButton);
+    bookCardButtons.insertAdjacentElement('beforeend', removeCardButton);
+
+    if(book.bookIsRead === true)
+    {
+        bookCard.style.borderColor = 'green';
+        readButton.innerText = 'Mark Un-read';
+    }
+    
+    desk.insertAdjacentElement('beforeend', bookCard);
+
+    bookCardTitle.innerText = book.title;
+    bookCardAuthor.innerText = book.author;
+
+    removeCardButton.addEventListener('click', () =>
+    {
+        removeBookFromLibrary(book);
+    })
+}
+
+function rebuildAllCards()
+{
+    desk.textContent = "";
+    library.forEach(populateDeskCard);
+}
+
+function removeBookFromLibrary(book)
+{
+    let currentBookIndex = library.findIndex(bookObject => book.title === bookObject.title && book.author === bookObject.author);
+
+    library.splice(currentBookIndex, 1);
+    rebuildAllCards();
+}
+
 modalCloseBtn.addEventListener('click', () =>
 {
     modalActual.style.display = 'none';
@@ -63,7 +125,7 @@ submitBookBtn.addEventListener('click', () =>
     if(bookAddedToLibrary)
     {
         modalActual.style.display = 'none';
+        rebuildAllCards();
     }
-
-   
 })
+
