@@ -33,45 +33,31 @@
             </form>
           </div>
         </div>
-        <div id="modal-add-shelf" class="modal">
+        <div id="modal-edit-book" class="modal">
             <div class="modal-content">
                 <span class="modal-close">X</span>
                 <form action="" method="get">
-                    <h3>Add a Shelf</h3>
+                    <h3>Edit Book:</h3>
                     <input type="text"
-                        id="shelf-name"
-                        placeholder="Shelf name"
-                        required 
-                        maxlength="50">                        
-                       <button type="submit" class="submit-shelf-button">Add shelf</button>
-                </form>
-              </div>
-            </div>
-            <div id="modal-edit-book" class="modal">
-                <div class="modal-content">
-                    <span class="modal-close">X</span>
-                    <form action="" method="get">
-                        <h3>Edit Book:</h3>
+                        id="title" 
+                        class="edit-title"
+                        placeholder="Title"
+                        maxlength="25">
                         <input type="text"
-                            id="title" 
-                            class="edit-title"
-                            placeholder="Title"
-                            maxlength="25">
-                            <input type="text"
-                            id="author"
-                            class="edit-author"
-                            placeholder="Author"
-                            maxlength="50">
-                            <div class="modal-alert-box" id="modal-edit-alert">
-                                
-                            </div>
-                            <div class="is-read">
-                                <label for="read">Mark as read:</label>
-                                <input type="checkbox" id="read"class="edit-read">
-                            </div>
-                           <button type="button" class="submit-book-button" id="submit-edit-book-btn">Add Book</button>
-                    </form>
-                </div>
+                        id="author"
+                        class="edit-author"
+                        placeholder="Author"
+                        maxlength="50">
+                        <div class="modal-alert-box" id="modal-edit-alert">
+                            
+                        </div>
+                        <div class="is-read">
+                            <label for="read">Mark as read:</label>
+                            <input type="checkbox" id="read"class="edit-read">
+                        </div>
+                    <button type="button" class="submit-book-button" id="submit-edit-book-btn">Add Book</button>
+                </form>
+            </div>
 
             </div>
     </div>
