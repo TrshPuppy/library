@@ -13,7 +13,7 @@ let library = [];
 // Globals:
 const addBookBtn = document.querySelector(".add-book");
 let desk = document.querySelector('.desk');
-const modalCloseBtn = document.querySelector(".modal-close");
+const modalCloseBtns = document.querySelectorAll(".modal-close");
 const modalContentBox = document.querySelector(".modal-content");
 const modalActual = document.querySelector(".modal");
 const modalAlertBox = document.querySelector(".modal-alert-box");
@@ -24,9 +24,21 @@ let modalCheckBox = document.querySelector('.read');
 const modalEditBook = document.querySelector("#modal-edit-book");
 const submitBookBtn = document.querySelector('.submit-book-button');
 
+// Functions:
 function displayAddModal(modal)
 {
     modal.style.display = 'block';
+
+    modalCloseBtns.forEach(button =>
+    {
+        button.addEventListener('click', () =>
+        {
+            modal.style.display = 'none';
+   
+            console.log('hi');
+        })
+    })
+
 }
 
 function createBookObject(title, author, isRead)
@@ -101,7 +113,6 @@ function populateDeskCard(book)
     })
 }
 
-// Functions:
 function rebuildAllCards()
 {
     desk.textContent = "";
@@ -118,13 +129,10 @@ function removeBookFromLibrary(book)
 
 function editBookInLibrary(book)
 {
-    
+
 }
 // Event Listeners:
-modalCloseBtn.addEventListener('click', () =>
-{
-    modalActual.style.display = 'none';
-})
+
 
 addBookBtn.addEventListener('click', () =>
 {
