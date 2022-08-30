@@ -50,20 +50,14 @@ function createBookObject(title, author, isRead)
 
 function addBookToLibrary(book)
 {
-    const otherBook = (element) =>  element.title === book.title && element.author === book.author;
+    const isThereAnError = checkForError(book);
+    
+    if(isThereAnError.success)
+    {
+        library.push(book);
+    }
 
-    const alreadyExists = library.some(otherBook);
-    const isInvalidInput = book.title.trim() == "" || book.author.trim() == "";
-
-    if(alreadyExists || isInvalidInput) return {success:false, error: alreadyExists ? 'This book already exists!': 'Title and/or Author invalid.'}
-   
-        // if(!library.some(otherBook) && !(book.title.trim() == "" || book.author.trim() == ""))
-        // {
-    library.push(book);
-        //     return {success:true}
-        // }
-         
-    return {success:true};
+    return isThereAnError;
 }
 
 function populateDeskCard(book)
@@ -146,8 +140,6 @@ function removeBookFromLibrary(book)
 
 function editBookInLibrary(oldBook)
 {
-    // const oldBookIndex = library.indexOf(oldBook);
-    // console.log(oldBookIndex);
     modalEditTitle.value = oldBook.title;
     modalEditAuthor.value = oldBook.author;
     modalEditCheckbox.checked = oldBook.isRead;
@@ -155,12 +147,12 @@ function editBookInLibrary(oldBook)
     bookBeingEdited = oldBook;
 }
 
-function isDuplicateInLibrary(title, author)
-{
-    const duplicateBookIndex = library.findIndex(b => b !== bookBeingEdited && b.title === title && b.author === author);
+// function isDuplicateInLibrary(title, author)
+// {
+//     const duplicateBookIndex = library.findIndex(b => b !== bookBeingEdited && b.title === title && b.author === author);
 
-    return duplicateBookIndex !== -1;
-}
+//     return duplicateBookIndex !== -1;
+// }
 
 function updateCounters()
 {
@@ -177,6 +169,30 @@ function updateUI()
 {
     updateCounters();
     rebuildAllCards();
+}
+
+function checkForError(book, bookToIgnore)
+{
+    const otherBook = (element) =>  element.title === book.title && element.author === book.author;
+
+    const alreadyExists = library.some(otherBook);
+    const isInvalidInput = book.title.trim() == "" || book.author.trim() == "";
+
+    // if(alreadyExists || isInvalidInput) return {success:false, error: alreadyExists ? 'This book already exists!': 'Title and/or Author invalid.'}
+
+    if(isInvalidInput)
+    {
+        return {success:false,
+                error: 'Title and/or Author is invalid' };
+
+    }
+    else if(alreadyExists)
+    {
+        return {success: false,
+                error: 'This book already exists!'};
+    }
+
+    return {success:true};
 }
 
 // Event Listeners:
@@ -204,20 +220,27 @@ submitBookBtn.addEventListener('click', () =>
 
 submitEditedBookBtn.addEventListener('click', (e) =>
 {
-    if(isDuplicateInLibrary(modalEditTitle.value, modalEditAuthor.value))
-    {
-        modalEditAlertBox.style.display = 'block';
-        return;
-    }
+    // if(isDuplicateInLibrary(modalEditTitle.value, modalEditAuthor.value))
+    // {
+    //     modalEditAlertBox.style.display = 'block';
+    //     return;
+    // }
 
     bookBeingEdited.title = modalEditTitle.value;
     bookBeingEdited.author = modalEditAuthor.value;
     bookBeingEdited.isRead = modalEditCheckbox.checked;
-   
-    updateUI();
-    modalEditAlertBox.style.display = 'none';
-    e.target.parentElement.parentElement.parentElement.style.display = 'none';
-})
+
+    if(checkForError(bookBeingEdited).success === true)
+    {
+        console.log('hey idiot, this is firing off');
+        // updateUI();
+        // modalEditAlertBox.style.display = 'none';
+        // e.target.parentElement.parentElement.parentElement.style.display = 'none';
+    }
+
+    modalEditAlertBox.style.display = 'block';
+    modalEditAlertBox.innerText = checkForError(bookBeingEdited).error; 
+});
 
 modalCloseBtns.forEach(button =>
 {
@@ -226,6 +249,6 @@ modalCloseBtns.forEach(button =>
         modalAlertBox.style.display = 'none';
         modalEditAlertBox.style.display = 'none';
         e.target.parentElement.parentElement.style.display = 'none';
-        console.log(e);
+
     })
 })
