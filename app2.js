@@ -225,21 +225,27 @@ submitEditedBookBtn.addEventListener('click', (e) =>
     //     modalEditAlertBox.style.display = 'block';
     //     return;
     // }
+    let bookBeingEditedCopy = {...bookBeingEdited};
+    console.log(bookBeingEditedCopy);
 
-    bookBeingEdited.title = modalEditTitle.value;
-    bookBeingEdited.author = modalEditAuthor.value;
-    bookBeingEdited.isRead = modalEditCheckbox.checked;
+    bookBeingEditedCopy.title = modalEditTitle.value;
+    bookBeingEditedCopy.author = modalEditAuthor.value;
+    bookBeingEditedCopy.isRead = modalEditCheckbox.checked;
 
-    if(checkForError(bookBeingEdited).success === true)
+    if(checkForError(bookBeingEditedCopy).success === true)
     {
         console.log('hey idiot, this is firing off');
         // updateUI();
         // modalEditAlertBox.style.display = 'none';
         // e.target.parentElement.parentElement.parentElement.style.display = 'none';
     }
-
-    modalEditAlertBox.style.display = 'block';
-    modalEditAlertBox.innerText = checkForError(bookBeingEdited).error; 
+    else
+    {
+        modalEditAlertBox.style.display = 'block';
+        modalEditAlertBox.innerText = checkForError(bookBeingEditedCopy).error; 
+        return;
+    }
+   
 });
 
 modalCloseBtns.forEach(button =>
@@ -249,6 +255,5 @@ modalCloseBtns.forEach(button =>
         modalAlertBox.style.display = 'none';
         modalEditAlertBox.style.display = 'none';
         e.target.parentElement.parentElement.style.display = 'none';
-
     })
 })
