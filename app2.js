@@ -162,7 +162,6 @@ function updateCounters()
 
     unreadTally.innerText = `(${totalBooksUnread})`;
     readTally.innerText = `(${totalBooksRead})`;
-
 }
 
 function updateUI()
@@ -195,6 +194,23 @@ function checkForError(book, bookToIgnore)
     return {success:true};
 }
 
+function submitEditedBook(bookBeingEditedCopy, e)
+{
+    if(checkForError(book).success === true)
+    {
+        bookBeingEdited = bookBeingEditedCopy;
+        updateUI();
+        modalEditAlertBox.style.display = 'none';
+        e.target.parentElement.parentElement.parentElement.style.display = 'none';
+    }
+    else
+    {
+        modalEditAlertBox.style.display = 'block';
+        modalEditAlertBox.innerText = checkForError(book).error; 
+        return;
+    }
+}
+
 // Event Listeners:
 addBookBtn.addEventListener('click', () =>
 {
@@ -220,31 +236,27 @@ submitBookBtn.addEventListener('click', () =>
 
 submitEditedBookBtn.addEventListener('click', (e) =>
 {
-    // if(isDuplicateInLibrary(modalEditTitle.value, modalEditAuthor.value))
-    // {
-    //     modalEditAlertBox.style.display = 'block';
-    //     return;
-    // }
     let bookBeingEditedCopy = {...bookBeingEdited};
-    console.log(bookBeingEditedCopy);
 
     bookBeingEditedCopy.title = modalEditTitle.value;
     bookBeingEditedCopy.author = modalEditAuthor.value;
     bookBeingEditedCopy.isRead = modalEditCheckbox.checked;
 
-    if(checkForError(bookBeingEditedCopy).success === true)
-    {
-        console.log('hey idiot, this is firing off');
-        // updateUI();
-        // modalEditAlertBox.style.display = 'none';
-        // e.target.parentElement.parentElement.parentElement.style.display = 'none';
-    }
-    else
-    {
-        modalEditAlertBox.style.display = 'block';
-        modalEditAlertBox.innerText = checkForError(bookBeingEditedCopy).error; 
-        return;
-    }
+    // if(checkForError(bookBeingEditedCopy).success === true)
+    // {
+    //     bookBeingEdited = bookBeingEditedCopy;
+    //     updateUI();
+    //     modalEditAlertBox.style.display = 'none';
+    //     e.target.parentElement.parentElement.parentElement.style.display = 'none';
+    // }
+    // else
+    // {
+    //     modalEditAlertBox.style.display = 'block';
+    //     modalEditAlertBox.innerText = checkForError(bookBeingEditedCopy).error; 
+    //     return;
+    // }
+
+    submitEditedBook(bookBeingEditedCopy, e)
    
 });
 
