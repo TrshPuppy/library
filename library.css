@@ -280,9 +280,6 @@ button:active {
   color: var(--secondary-font-color);
   border-bottom: 2px solid black;
   border-radius: 0;
-  /* overflow:hidden;
-    text-overflow:ellipsis;
-    white-space: nowrap; */
 }
 .book-card-buttons {
   display: flex;
