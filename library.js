@@ -1,5 +1,13 @@
+class Book {
+  constructor(title, author, isRead) {
+    this.title = title;
+    this.author = author;
+    this.bookIsRead = isRead;
+  }
+}
+
 //Buttons
-// const removeBookBtn = document.querySelector(".remove-button");
+
 const addBookBtn = document.querySelector(".add-book");
 const addShelfBtn = document.querySelector(".add-shelf");
 const markReadBtn = document.querySelector(".read-button");
@@ -10,6 +18,17 @@ const modalActuals = document.querySelectorAll(".modal");
 const modalAlertBox = document.querySelector(".modal-alert-box");
 modalAlertBox.style.display = "none";
 let modalInputTitle = document.querySelector("#title");
+
+// Test form validation on book title
+modalInputTitle.addEventListener("input", (e) => {
+  if (modalInputTitle.validity.typeMismatch) {
+    modalInputTitle.setCustomValidity("The title you entered is invalid!");
+    modalInputTitle.reportValidity();
+  } else {
+    modalInputTitle.setCustomValidity("");
+  }
+});
+
 let modalInputAuthor = document.querySelector("#author");
 const modalEditBook = document.querySelector("#modal-edit-book");
 let modalEditTitle = document.querySelector(".edit-title");
@@ -19,7 +38,6 @@ let modalEditCheckbox = document.querySelector(".edit-read");
 const editModalAlert = document.querySelector("#modal-edit-alert");
 
 //Modals
-// let modalIsOpen = false;
 const modalAddBook = document.querySelector("#modal-add-book");
 addBookBtn.addEventListener("click", (e) => {
   modalAddBook.style.display = "block";
@@ -59,13 +77,6 @@ let submitBookTitle;
 let submitBookAuthor;
 let isReadCheckbox;
 let book;
-class Book {
-  constructor(title, author, isRead) {
-    this.title = title;
-    this.author = author;
-    this.bookIsRead = isRead;
-  }
-}
 
 const submitBookBtn = document.querySelector(".submit-book-button");
 submitBookBtn.addEventListener("click", () => {
@@ -195,6 +206,7 @@ function updateCardtoRead(e) {
 
   e.target.innerText = "Mark Un-read";
 }
+
 function markBookRead(book) {
   book.bookIsRead = true;
 }
@@ -204,6 +216,7 @@ function updateCardtoUnread(e) {
   currentBookCard.style.borderColor = "white";
   e.target.innerText = "Mark Read";
 }
+
 function markBookUnread(book) {
   book.bookIsRead = false;
 }
@@ -221,7 +234,6 @@ function editBookCard(oldBook, e) {
   }
 
   editSubmitBtn.addEventListener("click", () => {
-    console.log("hi");
     editBookinArray(
       modalEditTitle.value,
       modalEditAuthor.value,
