@@ -1,6 +1,7 @@
 # library-app
 
 ## LIVE PREVIEW HERE: https://trshpuppy.github.io./library/library.html
+## Watch my video explaining my process and lessons learned! https://www.youtube.com/watch?v=Y40WAl_pMwM
 ### This is my library app project for the Odin Project (theodinproject.com).
 You can see the details of the project here: https://www.theodinproject.com/lessons/node-path-javascript-library
 
