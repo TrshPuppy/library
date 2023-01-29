@@ -1,9 +1,9 @@
-# library-app
+# JS Library App
 
-## LIVE PREVIEW HERE: https://trshpuppy.github.io./library/library.html
-## Watch my video explaining my process and lessons learned! https://www.youtube.com/watch?v=Y40WAl_pMwM
-### This is my library app project for the Odin Project (theodinproject.com).
-You can see the details of the project here: https://www.theodinproject.com/lessons/node-path-javascript-library
+## LIVE PREVIEW [HERE](https://trshpuppy.github.io./library/library.html)
+## Watch my [video](https://www.youtube.com/watch?v=Y40WAl_pMwM) explaining my process and lessons learned! 
+### This is my library app project for the [Odin Project](theodinproject.com).
+You can see the details of the project [here](https://www.theodinproject.com/lessons/node-path-javascript-library).
 
 The requirements for this project included creating a library app implementing JS, HTML, and CSS. The focus was on using JS to create and update a library array based on the users input of books, read and unread. Per the Oding Project, this app will be re-visited later in the curriculum in order to implement back-end data storage.
 
